@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--常量注入-->
+    <bean id="adress" class="com.feng.pojo.Address">
+        <property name="address" value="地址"/>
+    </bean>
+    <!--各种类型的属性注入-->
+    <bean id="student" class="com.feng.pojo.Student">
+        <!--常量注入-->
+       <property name="name" value="姓名"/>
+        <!-- bean(类)注入-->
+        <property name="address" ref="adress"/>
+        <!--数组注入-->
+        <property name="books" >
+            <array>
+                <value>书1</value>
+                <value>书2</value>
+                <value>书3</value>
+            </array>
+        </property>
+        <!--list注入-->
+        <property name="hobbys">
+            <list>
+                <value>爱好1</value>
+                <value>爱好2</value>
+                <value>爱好3</value>
+            </list>
+        </property>
+        <!--Map注入-->
+       <property name="card">
+           <map>
+               <entry key="卡1键" value="卡1值"/>
+               <entry key="卡2键" value="卡2值"/>
+           </map>
+       </property>
+        <!--set注入-->
+        <property name="games">
+            <set>
+                <value>游戏1</value>
+                <value>游戏2</value>
+            </set>
+        </property>
+        <!--Null注入-->
+        <property name="wife">
+        <null/>
+        </property>
+        <!--Properties注入-->
+        <property name="info">
+            <props>
+                <prop key="学号">20190604</prop>
+                <prop key="性别">男</prop>
+                <prop key="姓名">小明</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!-- 导入约束 : xmlns:p="http://www.springframework.org/schema/p"
+    P(属性: properties)命名空间 , 属性依然要设置set方法-->
+     <bean id="user" class="com.feng.pojo.User" p:name="名称" p:age="18"/>
+
+    <!--导入约束 : xmlns:c="http://www.springframework.org/schema/c"
+    C(构造: Constructor)命名空间 , 属性依然要设置set方法-->
+      <bean id="usert" class="com.feng.pojo.UserT" c:name="名称" c:age="18"/>
+</beans>

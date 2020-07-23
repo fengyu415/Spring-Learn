@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--无参构造注入-->
+    <bean id="hello" class="com.feng.pojo.Hello">
+        <property name="userName" value="spring"/>
+    </bean>
+  <!--  有参构造注入-->
+    <bean id="user" class="com.feng.pojo.User">
+        <!--方法一-->
+     <!--<constructor-arg index="0" value="有参构造注入的用户名"/>-->
+        <!--方法二-->
+      <!--  <constructor-arg name="userName"  value="有参构造注入的用户名"/>-->
+        <!--方法三-->
+        <constructor-arg type="java.lang.String" value="有参构造注入的用户名"/>
+    </bean>
+</beans>
